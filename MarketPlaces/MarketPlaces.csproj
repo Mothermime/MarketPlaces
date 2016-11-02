@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201611020031432_OverrideConventionsForGigsAndGenres.Designer.cs">
       <DependentUpon>201611020031432_OverrideConventionsForGigsAndGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611020036026_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\201611020036026_PopulateCategoryTable.Designer.cs">
+      <DependentUpon>201611020036026_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -271,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611020031432_OverrideConventionsForGigsAndGenres.resx">
       <DependentUpon>201611020031432_OverrideConventionsForGigsAndGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020036026_PopulateCategoryTable.resx">
+      <DependentUpon>201611020036026_PopulateCategoryTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
