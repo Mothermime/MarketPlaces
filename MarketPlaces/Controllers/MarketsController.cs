@@ -36,13 +36,14 @@ namespace MarketPlaces.Controllers
             {
 
 
-                //if (!ModelState.IsValid)
-                //{
-                //    viewModel.Categories = _context.Categories.ToList();
-                //}
+                if (!ModelState.IsValid)
+                {
+                    viewModel.Categories = _context.Categories.ToList();
+                    return View("Create", viewModel);
 
-                //return View("Create", viewModel);
+                }
 
+               
 
                 var market = new Market
                 {
