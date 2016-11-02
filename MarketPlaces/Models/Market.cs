@@ -18,7 +18,7 @@ namespace MarketPlaces.Models
 
         [Required]
         [StringLength(255)]
-        public string MarketName { get; set; }
+        public string Title { get; set; }
 
         public DateTime DateTime { get; set; }
 

@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,10 @@
     <Compile Include="Migrations\201611020036026_PopulateCategoryTable.Designer.cs">
       <DependentUpon>201611020036026_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611020230399_ChangedTablecolumns.cs" />
+    <Compile Include="Migrations\201611020230399_ChangedTablecolumns.Designer.cs">
+      <DependentUpon>201611020230399_ChangedTablecolumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -198,6 +203,9 @@
     <Compile Include="Models\Market.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FutureDateAttribute.cs" />
+    <Compile Include="ViewModels\MarketFormViewModel.cs" />
+    <Compile Include="ViewModels\ValidTimeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -254,6 +262,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Markets\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611020036026_PopulateCategoryTable.resx">
       <DependentUpon>201611020036026_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020230399_ChangedTablecolumns.resx">
+      <DependentUpon>201611020230399_ChangedTablecolumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
