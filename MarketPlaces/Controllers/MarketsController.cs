@@ -1,9 +1,8 @@
-﻿using System;
-using MarketPlaces.Models;
+﻿using MarketPlaces.Models;
 using MarketPlaces.ViewModels;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 
 namespace MarketPlaces.Controllers
 {
@@ -29,7 +28,7 @@ namespace MarketPlaces.Controllers
 
         [Authorize]
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(MarketFormViewModel viewModel)
 
         {
@@ -43,7 +42,7 @@ namespace MarketPlaces.Controllers
 
                 }
 
-               
+
 
                 var market = new Market
                 {

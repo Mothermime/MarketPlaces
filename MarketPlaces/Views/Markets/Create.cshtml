@@ -6,6 +6,7 @@
 <h2>Add a Market</h2>
 @using (Html.BeginForm("Create", "Markets"))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.Title)
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
