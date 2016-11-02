@@ -177,10 +177,21 @@
     <Compile Include="Migrations\201611012359346_InitialModel.Designer.cs">
       <DependentUpon>201611012359346_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611020014478_CreateMarketTable.cs" />
+    <Compile Include="Migrations\201611020014478_CreateMarketTable.Designer.cs">
+      <DependentUpon>201611020014478_CreateMarketTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611020031432_OverrideConventionsForGigsAndGenres.cs" />
+    <Compile Include="Migrations\201611020031432_OverrideConventionsForGigsAndGenres.Designer.cs">
+      <DependentUpon>201611020031432_OverrideConventionsForGigsAndGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Market.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -254,6 +265,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611012359346_InitialModel.resx">
       <DependentUpon>201611012359346_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020014478_CreateMarketTable.resx">
+      <DependentUpon>201611020014478_CreateMarketTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020031432_OverrideConventionsForGigsAndGenres.resx">
+      <DependentUpon>201611020031432_OverrideConventionsForGigsAndGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
