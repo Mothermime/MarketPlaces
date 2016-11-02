@@ -194,8 +194,11 @@
     <Compile Include="Migrations\201611020230399_ChangedTablecolumns.Designer.cs">
       <DependentUpon>201611020230399_ChangedTablecolumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611020903296_AddNameToApplicationUser.cs" />
+    <Compile Include="Migrations\201611020903296_AddNameToApplicationUser.Designer.cs">
+      <DependentUpon>201611020903296_AddNameToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -203,9 +206,18 @@
     <Compile Include="Models\Market.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\ForgotViewModel.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MarketFormViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\ValidTime.cs" />
+    <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -290,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611020230399_ChangedTablecolumns.resx">
       <DependentUpon>201611020230399_ChangedTablecolumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020903296_AddNameToApplicationUser.resx">
+      <DependentUpon>201611020903296_AddNameToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
