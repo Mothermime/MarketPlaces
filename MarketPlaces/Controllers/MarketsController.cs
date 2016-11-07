@@ -21,6 +21,7 @@ namespace MarketPlaces.Controllers
             var viewModel = new MarketFormViewModel
             {
                 Categories = _context.Categories.ToList()
+
             };
 
             return View(viewModel);
@@ -28,35 +29,32 @@ namespace MarketPlaces.Controllers
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+      [ValidateAntiForgeryToken]
         public ActionResult Create(MarketFormViewModel viewModel)
-
         {
+            //Todo  fix this
+            // THIS CODE DOES NOT WORK FOR ME!! It breaks the saving function even when all fields are correctly filled out
+            //if (!ModelState.IsValid)
+            //{
+            //    viewModel.Categories = _context.Categories.ToList();
+            //    return View("Create", viewModel);
+            //}
+
+
+
+            var market = new Market
             {
+                OrganiserId = User.Identity.GetUserId(),
+                CategoryId = viewModel.Category,
+                DateTime = viewModel.GetDateTime(),
+                Title = viewModel.Title,
+                Venue = viewModel.Venue
 
+            };
+            _context.Markets.Add(market);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
 
-                if (!ModelState.IsValid)
-                {
-                    viewModel.Categories = _context.Categories.ToList();
-                    return View("Create", viewModel);
-
-                }
-
-
-
-                var market = new Market
-                {
-                    OrganiserId = User.Identity.GetUserId(),
-                    CategoryId = viewModel.Category,
-                    DateTime = viewModel.GetDateTime(),
-                    Title = viewModel.Title,
-                    Venue = viewModel.Venue
-
-                };
-                _context.Markets.Add(market);
-                _context.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
         }
     }
 }

@@ -16,15 +16,48 @@
                 </div>
             </div>
             <div class="details">
-                <span class="category">
-                    @market.Category.Name
+                <span class="title">
+                    @market.Title  <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
                 </span>
-                <span class="organiser">
-                    @market.Organiser.Name
+            @*</div>
+                <div>*@   <span class="venue">
+                    @*<span class="newTitles">Venue:</span>*@    @market.Venue
                 </span>
-
             </div>
+                <div class+="extra details">
+                    <span class="category">
+                        <span class="newTitles">Theme</span>  @market.Category.Name
+                    </span>
+                </div>
+                    <span class="organiser">
+                        <span class="newTitles">Organiser:</span>  @market.Organiser.Name
+                    </span>
+                   
+               
+
+     
 
         </li>
     }
 </ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { marketId: button.attr("data-market-id") })
+                    .done(function() {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going");
+                    })
+                    .fail(function() {
+                        alert("Something failed");
+
+                    });
+            });
+        })
+    </script>
+}

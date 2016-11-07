@@ -18,10 +18,11 @@ namespace MarketPlaces.Controllers
         public ActionResult Index()
         {
             var upcomingMarkets = _context.Markets
-                .Include(m=> m.Category)
-              .Include(m => m.Organiser)
-              .Where(m => m.DateTime > DateTime.Now);
 
+                .Include(m => m.Category)
+                .Include(m => m.Organiser).OrderBy(m => m.DateTime)
+                .Where(m => m.DateTime > DateTime.Now).ToList();
+      
             return View(upcomingMarkets);
             
         }
