@@ -1,4 +1,5 @@
-﻿using MarketPlaces.Models;
+﻿using System.Data.Entity;
+using MarketPlaces.Models;
 using MarketPlaces.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Linq;
@@ -14,14 +15,29 @@ namespace MarketPlaces.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var markets = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Market)
+                .Include(m=> m.Category)
+                .ToList();
+            var viewModel = new MarketsViewModel()
+            {
+                UpcomingMarkets = markets,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+            return View( viewModel);
+        }
         [Authorize]
         public ActionResult Create()
         {
             var viewModel = new MarketFormViewModel
             {
                 Categories = _context.Categories.ToList()
-
+                
             };
 
             return View(viewModel);
@@ -33,12 +49,13 @@ namespace MarketPlaces.Controllers
         public ActionResult Create(MarketFormViewModel viewModel)
         {
             //Todo  fix this
-            // THIS CODE DOES NOT WORK FOR ME!! It breaks the saving function even when all fields are correctly filled out
-            //if (!ModelState.IsValid)
-            //{
-            //    viewModel.Categories = _context.Categories.ToList();
-            //    return View("Create", viewModel);
-            //}
+            // THIS CODE DOES NOT WORK FOR ME!! It breaks the saving function even when all fields are correctly filled out.  It is saying it is not valid for some reason.
+            // FIXED!! It was saying it wasn't valid because of the Create view above.  There was a validation error there.  Thank you Ryan.
+            if (!ModelState.IsValid)
+            {
+                viewModel.Categories = _context.Categories.ToList();
+                return View("Create", viewModel);
+            }
 
 
 

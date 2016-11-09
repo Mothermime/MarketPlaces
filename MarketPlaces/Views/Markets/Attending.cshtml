@@ -1,0 +1,51 @@
+﻿@model MarketPlaces.ViewModels.MarketsViewModel
+@{
+    ViewBag.Title = "Attending";
+}
+@* At this stage, although I could be using a shared view -Marketscshtml - I have left this one in because the information I want to display is slightly different and I haven't yet worked out how to use it to do what I want it to!  The difference is that in this view, I don't want to display the organiser name*@
+<h2>Markets I'm Attending</h2>
+<ul class="markets">
+    @foreach (var market in Model.UpcomingMarkets)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @market.DateTime.ToString(("MMM"))
+                </div>
+                <div class="day">
+                    @market.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="title">
+                    @market.Title
+                    @if (Model.ShowActions)
+                    {
+                        <button data-market-id="@market.Id " class="btn btn-link btn-sm js-toggle-follow">Follow</button>
+                    }
+
+                </span>
+                <span class="venue">
+                    @market.Venue
+                    @if (Model.ShowActions)
+                    {
+                        <button class="btn btn-default btn-sm pull-right js-toggle-attendance" data-market-id="@market.Id">Going ?</button>
+                    }
+                </span>
+            </div>
+            <div class+="extra details">
+                <span class="category">
+                    <span class="newTitles">Theme</span>  @market.Category.Name
+
+                </span>
+            </div>
+           
+
+
+
+
+
+        </li>
+    }
+</ul>
+

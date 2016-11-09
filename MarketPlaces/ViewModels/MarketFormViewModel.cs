@@ -9,7 +9,7 @@ namespace MarketPlaces.ViewModels
     {
 
 
-        [Required]
+
         public string Organiser { get; set; }
 
         [Required]

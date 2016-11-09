@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using MarketPlaces.Models;
+﻿using MarketPlaces.Models;
+using MarketPlaces.ViewModels;
+using System;
 using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MarketPlaces.Controllers
 {
     public class HomeController : Controller
     {
-        private  ApplicationDbContext _context;
+        private ApplicationDbContext _context;
         public HomeController()
         {
             _context = new ApplicationDbContext();
@@ -22,9 +21,14 @@ namespace MarketPlaces.Controllers
                 .Include(m => m.Category)
                 .Include(m => m.Organiser).OrderBy(m => m.DateTime)
                 .Where(m => m.DateTime > DateTime.Now).ToList();
-      
-            return View(upcomingMarkets);
-            
+            var viewModel = new MarketsViewModel
+            {
+                UpcomingMarkets = upcomingMarkets,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+
+            return View( viewModel);
+
         }
 
         public ActionResult About()

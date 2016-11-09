@@ -1,10 +1,11 @@
-﻿@model IEnumerable<MarketPlaces.Models.Market>
+﻿@model MarketPlaces.ViewModels.MarketsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
+<h2>Upcoming Markets</h2>
 
-<ul class="markets">
-    @foreach (var market in Model)
+<ul class="markets voffset4">
+    @foreach (var market in Model.UpcomingMarkets)
     {
         <li>
             <div class="date">
