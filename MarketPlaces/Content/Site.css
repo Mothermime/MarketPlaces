@@ -22,6 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*The fun part - changing the look of the form,  sizes and colours of font, appearance of boxes and buttons, positions of information etc.  Override them rather than changing the default just in case of upgrades which would make everything break.  Override will continue to override the defaults*/
 span.field-validation-error {
     color: red;
     font-weight: bold;

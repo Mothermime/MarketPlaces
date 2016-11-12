@@ -4,7 +4,7 @@ using System.Data.Entity;
 namespace MarketPlaces.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
+    {//make a reference here to allow migration
         public DbSet<Market> Markets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Attendance> Attendances { get; set; }

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Attending";
 }
-@* At this stage, although I could be using a shared view -Marketscshtml - I have left this one in because the information I want to display is slightly different and I haven't yet worked out how to use it to do what I want it to!  The difference is that in this view, I don't want to display the organiser name*@
+@* At this stage, although I could be using a shared view -Marketscshtml - but I want to use a slightly different view. The difference is that in this view, I don't want to display the organiser name*@
 <h2>Markets I'm Attending</h2>
 <ul class="markets">
     @foreach (var market in Model.UpcomingMarkets)

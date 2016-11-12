@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MarketPlaces.ViewModels
 {
+    //The view model pattern "provide clean separtation between UI and domain"
     public class MarketFormViewModel
     {
 
-
+        //Serverside validation
 
         public string Organiser { get; set; }
 
