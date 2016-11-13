@@ -29,7 +29,7 @@ span.field-validation-error {
     font-weight: bold;
     font-size: small;
 }
-
+/* a selection color-profile elements stop change margins input specific cases*/
 .voffset { margin-top: 2px;}
 .voffset1 { margin-top: 5px;}
 .voffset2 { margin-top: 10px;}

@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace MarketPlaces.Controllers
 {
+    [Authorize]//to limit to authenticated users
     public class FollowingsController : ApiController
     {
         private ApplicationDbContext _context;
@@ -18,11 +19,12 @@ namespace MarketPlaces.Controllers
         [HttpPost]
         public IHttpActionResult Follow(FollowingDto dto)
         {
+            //similar to attendances - check if market is already being followed
             var userId = User.Identity.GetUserId();
 
             if (_context.Followings.Any(f => f.FolloweeId == userId && f.FolloweeId == dto.FolloweeId)
         )
-        return BadRequest("Following already exists.");
+                return BadRequest("Following already exists.");
             var following = new Following
             {
                 FollowerId = userId,

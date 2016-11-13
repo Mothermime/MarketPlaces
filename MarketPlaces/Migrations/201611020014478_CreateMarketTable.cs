@@ -5,6 +5,7 @@ namespace MarketPlaces.Migrations
     
     public partial class CreateMarketTable : DbMigration
     {
+        //Creates the tables for the database automatically from the class
         public override void Up()
         {
             CreateTable(

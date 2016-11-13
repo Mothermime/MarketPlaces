@@ -6,6 +6,7 @@ namespace MarketPlaces.Models
 {
     public class Following
     {
+        //Again, like attendances, has a composite primary key and two navigation properties
         public ApplicationUser Followee { get; set; }
         public ApplicationUser Follower { get; set; }
         [Key]

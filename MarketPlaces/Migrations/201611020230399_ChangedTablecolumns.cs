@@ -5,6 +5,7 @@ namespace MarketPlaces.Migrations
     
     public partial class ChangedTablecolumns : DbMigration
     {
+        //making changes to the markets table
         public override void Up()
         {
             AddColumn("dbo.Markets", "Title", c => c.String(nullable: false, maxLength: 255));

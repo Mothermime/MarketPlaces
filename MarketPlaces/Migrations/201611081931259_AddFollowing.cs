@@ -5,6 +5,7 @@ namespace MarketPlaces.Migrations
     
     public partial class AddFollowing : DbMigration
     {
+        //adding the table for followers
         public override void Up()
         {
             CreateTable(

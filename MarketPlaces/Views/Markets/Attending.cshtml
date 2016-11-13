@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Attending";
 }
-@* At this stage, although I could be using a shared view -Marketscshtml - but I want to use a slightly different view. The difference is that in this view, I don't want to display the organiser name*@
+@* At this stage,  I could be using a shared view -Marketscshtml - but I want to use a slightly different view. The difference is that in this view, I don't want to display the organiser name*@
 <h2>Markets I'm Attending</h2>
 <ul class="markets">
     @foreach (var market in Model.UpcomingMarkets)
@@ -29,7 +29,7 @@
                     @market.Venue
                     @if (Model.ShowActions)
                     {
-                        <button class="btn btn-default btn-sm pull-right js-toggle-attendance" data-market-id="@market.Id">Going ?</button>
+                        @*<button class="btn btn-default btn-sm pull-right js-toggle-attendance" data-market-id="@market.Id">Going</button>*@
                     }
                 </span>
             </div>

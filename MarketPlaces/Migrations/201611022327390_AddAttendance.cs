@@ -5,6 +5,7 @@ namespace MarketPlaces.Migrations
     
     public partial class AddAttendance : DbMigration
     {
+        //adding the new attendance table with composite keys
         public override void Up()
         {
             CreateTable(
