@@ -1,0 +1,22 @@
+﻿@model MarketPlaces.Models.StallHolders
+@{
+    ViewBag.Title = "CreateStallHolder";
+}
+
+<h2>Register a Stall</h2>
+
+<form>
+    <div class=" "formgroup>
+        @Html.LabelFor(s => s.Name)
+        @Html.TextBoxFor(s => s.Name, new { @class = "form-control" })
+    </div>
+
+    <div class=" "formgroup>
+        @Html.LabelFor(s => s.Product)
+        @Html.TextBoxFor(s => s.Product, new { @class = "form-control" })
+    </div>
+    <div class=" "formgroup>
+        @Html.LabelFor(s => s.Stallholder)
+        @Html.TextBoxFor(s => s.Stallholder, new { @class = "form-control" })
+    </div>
+</form>

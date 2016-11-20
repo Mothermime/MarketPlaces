@@ -64,6 +64,7 @@ span.field-validation-error {
    }
 .navbar-brand {
         font-weight: 700;
+        font-size: 25px
 }
 
 body {
@@ -142,6 +143,7 @@ h6,
     padding: 6px 12px;
 
 }
+
 .markets > li .details {
     position: absolute;
     top: 0;

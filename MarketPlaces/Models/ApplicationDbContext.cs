@@ -4,12 +4,16 @@ using System.Data.Entity;
 namespace MarketPlaces.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {//make a reference to the class here as a DbSet to allow migration.  As classes are added to the project they are added as DbSets.  As they are added, a migration is added to update the database 
+    {
+        //Make a reference to the class here as a DbSet to allow migration. 
+        //As classes are added to the project they are added as DbSets. 
+        //As they are added, a migration is added to update the database 
 
         public DbSet<Market> Markets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Following> Followings { get; set; }
+        public DbSet<StallHolders> StallHolder { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

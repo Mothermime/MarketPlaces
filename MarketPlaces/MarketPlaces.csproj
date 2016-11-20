@@ -186,6 +186,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarketsController.cs" />
+    <Compile Include="Controllers\StallHolderController.cs" />
     <Compile Include="Dtos\AttendanceDto.cs" />
     <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,6 +224,18 @@
     <Compile Include="Migrations\201611081931259_AddFollowing.Designer.cs">
       <DependentUpon>201611081931259_AddFollowing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611150200413_Add-StallHolders.cs" />
+    <Compile Include="Migrations\201611150200413_Add-StallHolders.Designer.cs">
+      <DependentUpon>201611150200413_Add-StallHolders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611202130265_Add-Stallhoders.cs" />
+    <Compile Include="Migrations\201611202130265_Add-Stallhoders.Designer.cs">
+      <DependentUpon>201611202130265_Add-Stallhoders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611202203078_OverrideStallholder.cs" />
+    <Compile Include="Migrations\201611202203078_OverrideStallholder.Designer.cs">
+      <DependentUpon>201611202203078_OverrideStallholder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -231,6 +244,7 @@
     <Compile Include="Models\Following.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Market.cs" />
+    <Compile Include="Models\StallHolders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
@@ -244,6 +258,7 @@
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\StallHolderFormViewModel.cs" />
     <Compile Include="ViewModels\ValidTime.cs" />
     <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
   </ItemGroup>
@@ -306,6 +321,7 @@
     <Content Include="Views\Markets\Create.cshtml" />
     <Content Include="Views\Markets\Attending.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\StallHolder\CreateStallHolder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -344,6 +360,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611081931259_AddFollowing.resx">
       <DependentUpon>201611081931259_AddFollowing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611150200413_Add-StallHolders.resx">
+      <DependentUpon>201611150200413_Add-StallHolders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611202130265_Add-Stallhoders.resx">
+      <DependentUpon>201611202130265_Add-Stallhoders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611202203078_OverrideStallholder.resx">
+      <DependentUpon>201611202203078_OverrideStallholder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
