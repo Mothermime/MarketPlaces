@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201611202203078_OverrideStallholder.Designer.cs">
       <DependentUpon>201611202203078_OverrideStallholder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611210058267_AddForeignKeysPropertytoStallHolder.cs" />
+    <Compile Include="Migrations\201611210058267_AddForeignKeysPropertytoStallHolder.Designer.cs">
+      <DependentUpon>201611210058267_AddForeignKeysPropertytoStallHolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611202203078_OverrideStallholder.resx">
       <DependentUpon>201611202203078_OverrideStallholder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611210058267_AddForeignKeysPropertytoStallHolder.resx">
+      <DependentUpon>201611210058267_AddForeignKeysPropertytoStallHolder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
