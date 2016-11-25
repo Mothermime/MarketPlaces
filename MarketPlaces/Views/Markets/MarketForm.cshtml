@@ -1,18 +1,19 @@
 ﻿@* The first thing to do to create a new view is to specify the model behind the view (that changed to a view model later in the process of building the project)A view model is used when what is presented to the user is different from the model of the domain e.g. date and time  Another name for view nmodel is presentation model.  It is not part of the domain  *@
 @model MarketPlaces.ViewModels.MarketFormViewModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = Model.Heading;
 }
 
-<h2>Add a Market</h2>
+<h2>@Model.Heading</h2>
 
-@using (Html.BeginForm("Create", "Markets"))
+@using (Html.BeginForm(Model.Action, "Markets"))
 
 { 
     <p class="alert alert-info">All fields are <strong>required</strong>.</p>
     
     //Place an antiforgery token here to prevent csrf attacks -cross-site request forgery which allows an attacker to perform actions on behalf of a user without their knowledge. eg. Creating markets on behalf of an organiiser without their knowledge
         @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
     //Bootstrap has layout classes to use to create different looks.  - Google Bootstrap to find them.  E.g. .form-group wraps labels and controls with preset, optimum, spacing;  'form-control'  changes the look of the text box. Each div creates a new 'block' of labels and contseparates the different components onto a different 'line'
     //add validation message place holder for each property
       

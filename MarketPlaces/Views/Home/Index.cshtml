@@ -1,4 +1,5 @@
-﻿@model MarketPlaces.ViewModels.MarketsViewModel
+﻿@using MarketPlaces.Controllers
+@model MarketPlaces.ViewModels.MarketsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -21,28 +22,32 @@
             </div>
             <div class="details">
                 <span class="title">
-                    @market.Title  <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
+                    @market.Title
+                    @if (Model.ShowActions)
+                    {
+                        <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-details" onclick="location.href='@Url.Action("Details", "Markets")'">Details</button>
+                    }
                     @* "pull-right" only pulls it in line with the edge of the div it is in.  If divs have different length information, the buttons will be all over the place, lining up with whatever text they are with *@
                 </span>
-              
-             <span class="venue">
+
+                <span class="venue">
                     @*<span class="newTitles">Venue:</span>*@    @market.Venue
                 </span>
-               <br />
-    <span class="category">
-           @*<span class="newTitles">Theme</span>*@  @market.Category.Name
-       </span>
+                <br />
+                <span class="category">
+                    @*<span class="newTitles">Theme</span>*@  @*@market.Category.Name*@
+                </span>
             </div>
-                <div class+="extra details">
-                   
+            @*<div class+="extra details">
+
                 </div>
                     <span class="organiser">
                         <span class="newTitles">Organiser:</span>  @market.Organiser.Name
-                    </span>
-                   
-               
+                    </span>*@
 
-     
+
+
+
 
         </li>
     }
@@ -53,21 +58,35 @@
 {
     @* When the document is loaded subscribe to the click event of the button - toggle_attendance means that the button can be used to add or delete attendance  *@
     <script>
-        $(document).ready(function() {
-            $(".js-toggle-attendance").click(function (e) {
-                var button = $(e.target);
-                $.post("/api/attendances", { marketId: button.attr("data-market-id") })
-                    .done(function() {
-                        button
-                            .removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
-                    })
-                    .fail(function() {
-                        alert("Something failed");
+    $(document)
+        .ready(function() {
+            $(".js-attendance")
+                .click(function(e) {
+                    var button = $(e.target);
+                    $.post("/api/attendances", { marketId: button.attr("data-market-id") })
+                        //.done(function() {
+                        //                    button
+                        //                        //change the colour of the button when it is clicked: remove the default, white, colour, add the 'info', blue, colour and change the text
+                        //                        .removeClass("btn-default")
+                        //                        .addClass("btn-info")
+                        //                        .text("Going");
+                        //                })
+                        //                .fail(function() {
+                        //                    alert("Something failed");
 
-                    });
-            });
-        })
-    </script>
+                        //                });
+                                });
+                            })
+                            @*$(document)
+            .ready(function() {
+                $(".js-toggle-details")
+                    .click(function(e) {
+                            var button = $(e.target);
+                            $.post("/api/attendances", { marketId: button.attr("data-market-id") });
+                        var url = @Url.Action("Details", "Markets")
+                        }
+                    );
+            })*@
+
+                               </script >
 }

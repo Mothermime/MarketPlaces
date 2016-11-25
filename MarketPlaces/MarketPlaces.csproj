@@ -322,10 +322,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Markets\Create.cshtml" />
+    <Content Include="Views\Markets\MarketForm.cshtml" />
     <Content Include="Views\Markets\Attending.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\StallHolder\CreateStallHolder.cshtml" />
+    <Content Include="Views\Markets\Details.cshtml" />
+    <Content Include="Views\Markets\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

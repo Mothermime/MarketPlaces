@@ -96,7 +96,7 @@ h6,
 }
 .form-control {
     font-size: 14px;
-        padding: 1px 12px;
+        height:44px
     -ms-border-radius: 12px;
     border-radius: 12px;
 }
@@ -109,7 +109,7 @@ h6,
 .btn {
     /*font-size: 18px;
     padding: 7px 25px;*/
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     -ms-border-radius: 12px;
     border-radius: 12px
    
@@ -169,5 +169,13 @@ h6,
        font-size: 14px;
        color: #0000cd;
   }
+ .markets > li .actions {
+     font-size: 14px;
+     display: none;
+
+ }
+ .markets > li:hover .actions {
+     display: block;
+ }
 
 

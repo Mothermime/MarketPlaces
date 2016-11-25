@@ -18,8 +18,9 @@ namespace MarketPlaces.Controllers
         {
             var upcomingMarkets = _context.Markets
 
-                .Include(m => m.Category)
-                .Include(m => m.Organiser).OrderBy(m => m.DateTime)
+              //.Include(m => m.Category)
+              // .Include(m => m.Organiser)
+              .OrderBy(m => m.DateTime)
                 .Where(m => m.DateTime > DateTime.Now).ToList();
             var viewModel = new MarketsViewModel
             {

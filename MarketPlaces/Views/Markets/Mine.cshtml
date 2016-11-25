@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<MarketPlaces.Models.Market>
+@{
+    ViewBag.Title = "Mine";
+}
+
+<h2>My Upcoming Markets</h2>
+
+<ul class="markets voffset4">
+    @foreach (var market in Model)
+    {
+       <li>
+            <div class="date">
+                <div class="month">
+                    @market.DateTime.ToString(("MMM"))
+                </div>
+                <div class="day">
+                    @market.DateTime.ToString("d ")
+                </div>
+                <div class="month">
+                    @market.DateTime.ToString(("HH:mm"))
+                </div>
+            </div>
+            <div class="details">
+                <span class="title">
+                    @market.Title  <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-details">Details</button>
+                    @* "pull-right" only pulls it in line with the edge of the div it is in.  If divs have different length information, the buttons will be all over the place, lining up with whatever text they are with *@
+                </span>
+
+                <span class="venue">
+                    @*<span class="newTitles">Venue:</span>*@    @market.Venue
+                </span>
+                <br />
+                <span class="category">
+                    @*<span class="newTitles">Theme</span>*@  @market.Category.Name
+                </span>
+            <div class="actions">
+                <a href="@Url.Action("Edit", "Markets", new {id = market.Id})">
+                    Edit
+                </a>
+            </div>
+           
+               
+            </div>
+
+
+
+
+
+
+        </li>
+    }
+</ul>
