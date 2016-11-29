@@ -181,8 +181,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AttendancesController.cs" />
-    <Compile Include="Controllers\FollowingsController.cs" />
+    <Compile Include="Controllers\Api\AttendancesController.cs" />
+    <Compile Include="Controllers\Api\FollowingsController.cs" />
+    <Compile Include="Controllers\Api\MarketsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarketsController.cs" />
@@ -240,6 +241,10 @@
     <Compile Include="Migrations\201611210058267_AddForeignKeysPropertytoStallHolder.Designer.cs">
       <DependentUpon>201611210058267_AddForeignKeysPropertytoStallHolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611252142065_AddIsCancelledToMarket.cs" />
+    <Compile Include="Migrations\201611252142065_AddIsCancelledToMarket.Designer.cs">
+      <DependentUpon>201611252142065_AddIsCancelledToMarket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -273,6 +278,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -378,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611210058267_AddForeignKeysPropertytoStallHolder.resx">
       <DependentUpon>201611210058267_AddForeignKeysPropertytoStallHolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252142065_AddIsCancelledToMarket.resx">
+      <DependentUpon>201611252142065_AddIsCancelledToMarket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

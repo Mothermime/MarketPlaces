@@ -49,7 +49,7 @@ namespace MarketPlaces.Controllers
 
             };
             // put the view model inside the view
-            return View("MarketForm",viewModel);
+            return View("MarketForm", viewModel);
         }
         [Authorize]
         public ActionResult Edit(int id)
@@ -114,7 +114,7 @@ namespace MarketPlaces.Controllers
                                   //The parameter holds the name of the model behind the view so that when the form is posted that is what we will get
         public ActionResult Update(MarketFormViewModel viewModel)
         {
-           
+
 
             //Check to see if model is valid.  If it's not return the create view otherwise returnt he home view
             if (!ModelState.IsValid)
@@ -128,7 +128,7 @@ namespace MarketPlaces.Controllers
             market.Venue = viewModel.Venue;
             market.DateTime = viewModel.GetDateTime();
             market.CategoryId = viewModel.Category;
-            
+
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
 
@@ -156,12 +156,12 @@ namespace MarketPlaces.Controllers
         {
             var userId = User.Identity.GetUserId();
             var gigs = _context.Markets
-                .Where(m => m.OrganiserId == userId && m.DateTime > DateTime.Now)
+                .Where(m => m.OrganiserId == userId && m.DateTime > DateTime.Now && !m.IsCancelled)
                 .Include(m => m.Category)
                 .ToList();
             return View(gigs);
         }
-      
+
 
     }
 }

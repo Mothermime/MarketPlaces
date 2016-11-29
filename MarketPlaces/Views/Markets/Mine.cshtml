@@ -9,7 +9,7 @@
 <ul class="markets voffset4">
     @foreach (var market in Model)
     {
-       <li>
+        <li>
             <div class="date">
                 <div class="month">
                     @market.DateTime.ToString(("MMM"))
@@ -23,7 +23,7 @@
             </div>
             <div class="details">
                 <span class="title">
-                    @market.Title  <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-details">Details</button>
+                    @market.Title  @*<button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-details markets voffset6">Going?</button>*@
                     @* "pull-right" only pulls it in line with the edge of the div it is in.  If divs have different length information, the buttons will be all over the place, lining up with whatever text they are with *@
                 </span>
 
@@ -34,11 +34,14 @@
                 <span class="category">
                     @*<span class="newTitles">Theme</span>*@  @market.Category.Name
                 </span>
-            <div class="actions">
-                <a href="@Url.Action("Edit", "Markets", new {id = market.Id})">
-                    Edit
-                </a>
-            </div>
+                <div class="actions">
+                    <a href="@Url.Action("Edit", "Markets", new {id = market.Id})">
+                        Edit
+                    </a> |
+                    <a href="#" class="js-cancel-market" data-market-id="@market.Id">
+                        Cancel
+                    </a>
+                </div>
            
                
             </div>
@@ -51,3 +54,53 @@
         </li>
     }
 </ul>
+@section scripts
+{
+    <script>
+        //when document is ready the specified function will be called
+        $(document)
+            .ready(function() {
+                $(".js-cancel-market")
+                    .click(function(e) {
+                        //e represents the click event
+                        var link = $(e.target);
+                        //ask user for confirmation
+                        bootbox.dialog({
+                            message: "Are you sure you want to cancel this market?",
+                            title: "Confirm",
+                            buttons: {
+                                no: {
+                                    label: "No",
+                                    className: "btn-default",
+                                    callback: function() {
+                                        bootbox.hideAll();
+                                    }
+                                },
+                                yes: {
+                            label: "Yes",
+                            className: "btn-danger",
+                            callback: function() {
+                                $.ajax({
+                                    url: "/api/markets/" + link.attr("data-market-id"),
+                                    method: "DELETE" //HttpDelete
+
+                                })
+                                  .done(function() {
+                                      //The li that represents the market
+                                      link.parents("li")
+                                          .fadeOut(function() {
+                                              $(this).remove();
+                                          });
+                                  })
+                                  .fail(function() {
+                                      alert("Something failed!");
+                                  });
+                                }
+                              }
+                            }
+                        });
+                     });    
+                  });
+                   
+    </script>
+}

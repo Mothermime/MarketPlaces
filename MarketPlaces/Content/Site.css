@@ -36,6 +36,7 @@ span.field-validation-error {
 .voffset3 { margin-top: 20px;}
 .voffset4 { margin-top: 40px;}
 .voffset5 { margin-top: 80px;}
+.voffset6 { margin-left: 10px;}
 
 /*Bootstrap Overrides*/
 .navbar-inverse {
@@ -153,6 +154,7 @@ h6,
  .markets > li .details .title {
        font-weight: bold;
        display: block;
+    
    }
    .markets > li .details .category {
        

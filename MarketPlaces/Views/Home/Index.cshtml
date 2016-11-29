@@ -23,15 +23,21 @@
             <div class="details">
                 <span class="title">
                     @market.Title
-                    @if (Model.ShowActions)
+                    
+                    @if (market.IsCancelled)
                     {
-                        <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-details" onclick="location.href='@Url.Action("Details", "Markets")'">Details</button>
+                        <spanclass="label label-warning">Cancelled</spanclass="label>
+                    }
+                    @if (Model.ShowActions && !market.IsCancelled)
+                    {//todo: work out how to get the information to a different view - to expand what is on display so that the page is not cluttered.  Have changed the name of the button but can't work out how to change the information  Tried adding this  (onclick="location.href='@Url.Action("Details", "Markets")'") but I need some more understanding around the api controllers to get this problem to work
+                        <button data-market-id="@market.Id " class="btn btn-default btn-sm pull-right js-toggle-attendance markets voffset6" >Going?</button>
                     }
                     @* "pull-right" only pulls it in line with the edge of the div it is in.  If divs have different length information, the buttons will be all over the place, lining up with whatever text they are with *@
                 </span>
 
                 <span class="venue">
                     @*<span class="newTitles">Venue:</span>*@    @market.Venue
+                    <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@market.OrganiserId">Follow</button>
                 </span>
                 <br />
                 <span class="category">
@@ -44,49 +50,60 @@
                     <span class="organiser">
                         <span class="newTitles">Organiser:</span>  @market.Organiser.Name
                     </span>*@
-
-
-
-
-
         </li>
     }
 </ul>
-
-
 @section scripts
 {
     @* When the document is loaded subscribe to the click event of the button - toggle_attendance means that the button can be used to add or delete attendance  *@
     <script>
-    $(document)
-        .ready(function() {
-            $(".js-attendance")
-                .click(function(e) {
-                    var button = $(e.target);
-                    $.post("/api/attendances", { marketId: button.attr("data-market-id") })
-                        //.done(function() {
-                        //                    button
-                        //                        //change the colour of the button when it is clicked: remove the default, white, colour, add the 'info', blue, colour and change the text
-                        //                        .removeClass("btn-default")
-                        //                        .addClass("btn-info")
-                        //                        .text("Going");
-                        //                })
-                        //                .fail(function() {
-                        //                    alert("Something failed");
-
-                        //                });
-                                });
+        $(document)
+            .ready(function()
+            {
+                $(".js-toggle-attendance")
+                    .click(function(e) 
+                    {
+                        var button = $(e.target);
+                        $.post("/api/attendances",
+                            {
+                                marketId: button.attr("data-market-id")
                             })
-                            @*$(document)
-            .ready(function() {
-                $(".js-toggle-details")
-                    .click(function(e) {
-                            var button = $(e.target);
-                            $.post("/api/attendances", { marketId: button.attr("data-market-id") });
-                        var url = @Url.Action("Details", "Markets")
-                        }
-                    );
-            })*@
+                            .done(function()
+                            {
+                                button
+                                    //change the colour of the button when it is clicked: remove the default, white, colour, add the 'info', blue, colour and change the text
+                                    .removeClass("btn-default")
+                                    .addClass("btn-info")
+                                    .text("Going");
+                            })
+                            .fail(function() 
+                            {
+                                alert("Something failed");
+                            });
+                    });
 
-                               </script >
+                //This does not yet work and I can't figure out why at the moment
+                $(".js-toggle-follow")
+                    .click(function(e)
+                    {
+                        var button = $(e.target);
+                        $.post("/api/followings",
+                        {
+                            followeeId: button.attr("data-user-id")
+                                .done(function() 
+                                {
+                                    button.text("Following");
+                                })
+                                .fail(function()
+                                {
+                                    alert("Something failed");
+                                })
+
+                        });
+
+                    });
+            });
+
+    </script >
+
 }

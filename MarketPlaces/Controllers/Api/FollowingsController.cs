@@ -1,10 +1,10 @@
-﻿using MarketPlaces.Dtos;
+﻿using System.Linq;
+using System.Web.Http;
+using MarketPlaces.Dtos;
 using MarketPlaces.Models;
 using Microsoft.AspNet.Identity;
-using System.Linq;
-using System.Web.Http;
 
-namespace MarketPlaces.Controllers
+namespace MarketPlaces.Controllers.Api
 {
     [Authorize]//to limit to authenticated users
     public class FollowingsController : ApiController

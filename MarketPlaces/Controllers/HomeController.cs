@@ -1,7 +1,6 @@
 ﻿using MarketPlaces.Models;
 using MarketPlaces.ViewModels;
 using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -21,14 +20,14 @@ namespace MarketPlaces.Controllers
               //.Include(m => m.Category)
               // .Include(m => m.Organiser)
               .OrderBy(m => m.DateTime)
-                .Where(m => m.DateTime > DateTime.Now).ToList();
+                .Where(m => m.DateTime > DateTime.Now && !m.IsCancelled).ToList();
             var viewModel = new MarketsViewModel
             {
                 UpcomingMarkets = upcomingMarkets,
                 ShowActions = User.Identity.IsAuthenticated
             };
 
-            return View( viewModel);
+            return View(viewModel);
 
         }
 

@@ -10,6 +10,8 @@ namespace MarketPlaces.Models
     {
         public int Id { get; set; }
 
+        public bool IsCancelled { get; set; }
+
         //ApplicationUser is a preset class & is a navigation property
         public ApplicationUser Organiser { get; set; }
         //The 'Required' label makes the column 'not null'.  It wiil initially show an error because it needs a using statement.  if Resharper doesn't work right-click and choose resolve using statements
