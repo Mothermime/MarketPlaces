@@ -14,6 +14,9 @@ namespace MarketPlaces.Models
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Following> Followings { get; set; }
         public DbSet<StallHolders> StallHolder { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<UserNotification> UserNotifications { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -23,15 +26,15 @@ namespace MarketPlaces.Models
         {
             return new ApplicationDbContext();
         }
-        //When there is more than one foreigh=n key which could cause multiple cascade paths, fluent API is used to 
-       //This disables one of the cascade paths
+        //When there is more than one foreign key which could cause multiple cascade paths, fluent API is used to 
+        //This disables one of the cascade paths
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Attendance>()
                 //each attendance has a required market
                 .HasRequired(a => a.Market)
                 //each market can have many attendances
-                .WithMany()
+                .WithMany(m => m.Attendances)
                 //turn off cascade on delete
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<ApplicationUser>()
@@ -41,6 +44,10 @@ namespace MarketPlaces.Models
             modelBuilder.Entity<ApplicationUser>()
                .HasMany(u => u.Followees)
                .WithRequired(f => f.Follower)
+               .WillCascadeOnDelete(false);
+            modelBuilder.Entity<UserNotification>()
+               .HasRequired(n => n.User)
+               .WithMany(u => u.UserNotifications)
                .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);

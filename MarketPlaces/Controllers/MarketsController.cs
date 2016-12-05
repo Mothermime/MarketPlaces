@@ -18,6 +18,16 @@ namespace MarketPlaces.Controllers
             //initialize _context
             _context = new ApplicationDbContext();
         }
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userId = User.Identity.GetUserId();
+            var markets = _context.Markets
+                .Where(m => m.OrganiserId == userId && m.DateTime > DateTime.Now && !m.IsCancelled)
+                .Include(m => m.Category)
+                .ToList();
+            return View(markets);
+        }
 
         [Authorize]
         public ActionResult Attending()
@@ -114,8 +124,6 @@ namespace MarketPlaces.Controllers
                                   //The parameter holds the name of the model behind the view so that when the form is posted that is what we will get
         public ActionResult Update(MarketFormViewModel viewModel)
         {
-
-
             //Check to see if model is valid.  If it's not return the create view otherwise returnt he home view
             if (!ModelState.IsValid)
             {
@@ -123,11 +131,10 @@ namespace MarketPlaces.Controllers
                 return View("MarketForm", viewModel);
             }
             var UserId = User.Identity.GetUserId();
-            var market = _context.Markets.Single(m => m.Id == viewModel.Id && m.OrganiserId == UserId);
-            market.Title = viewModel.Title;
-            market.Venue = viewModel.Venue;
-            market.DateTime = viewModel.GetDateTime();
-            market.CategoryId = viewModel.Category;
+            var market = _context.Markets
+                .Include(m => m.Attendances.Select(a => a.Attendee))
+                .Single(m => m.Id == viewModel.Id && m.OrganiserId == UserId);
+           // market.Modify(viewModel.GetDateTime(), viewModel.Venue, viewModel.Category);
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
@@ -151,17 +158,7 @@ namespace MarketPlaces.Controllers
             return RedirectToAction("Details");
         }
 
-        [Authorize]
-        public ActionResult Mine()
-        {
-            var userId = User.Identity.GetUserId();
-            var gigs = _context.Markets
-                .Where(m => m.OrganiserId == userId && m.DateTime > DateTime.Now && !m.IsCancelled)
-                .Include(m => m.Category)
-                .ToList();
-            return View(gigs);
-        }
-
+       
 
     }
 }

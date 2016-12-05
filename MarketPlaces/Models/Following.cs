@@ -1,12 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Web.Http.Routing.Constraints;
 
 namespace MarketPlaces.Models
 {
     public class Following
     {
         //Again, like attendances, has a composite primary key and two navigation properties
+
+        //This class is going to be used for following a stall holder rather than a market organiser but that is yet to come
+
         public ApplicationUser Followee { get; set; }
         public ApplicationUser Follower { get; set; }
         [Key]

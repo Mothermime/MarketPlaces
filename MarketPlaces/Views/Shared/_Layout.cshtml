@@ -42,5 +42,68 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+<script type="text/x-template" id="notifications-template">
+    <ul>
+        @* '_.' ( underscore dot) allows access to Underscore.js methods  <%= %> is used to evaluate variables <% %> is used for writing logic*@
+        <%
+        _.each(notifications, function(notification){
+        if (notification.type == 1){%>
+        <li><%= notification.market.organiser.name %> has cancelled the market at <% notification.market.venue %>at <% notification.market.dateTime %>.</li>
+        <%
+        }
+        else if (notification.type == 2){
+        var changes = [],
+        originalValues = [],
+        newValues = [];
+
+        if (notifications.originalVenue != notification.market.venue){
+        changes.push('venue');
+        originalValues.push(notification.originalVenue);
+        newValues.push(notification.market.venue)}
+
+        if (notification.originalDateTime != notification.gig.dateTime){
+        changes.push('date/time')
+        originalValues.push(notification.originalDateTime);
+        newValues.push(notification.market.dateTime);}%>
+        <li><%= notification.market.name %> has changed the <%= changes.join(' and ')%> of the market from the <%= originalValues.join('/' )%> to<%= newValues.join('/') %> </li>
+        if (notification.type == 3){%>
+        <li><%= notification.market.organiser.name %> has organised a market for <% notification.market.dateTime %>at <% notification.market.venue %>.</li>
+        <%
+        }
+        })
+        %>
+    </ul>
+</script>
+<script>
+    $(document)
+        .ready(function() {
+            $.getJSON("/api/notification",
+                function (notifications) {
+                    if (notifications.length == 0)
+                        return;
+
+                    $(".js-notifications-count")
+                      .text(notifications.length)
+                      .removeClass("hide")
+                      .addClass("animated bounceInDown");
+
+                    $(".notifications").popover({
+                        html: true,
+                        title: "Notifications",
+                        content: function () {
+                            //the template method will get the string and com0pile it into a function
+                            var compiled = _.template($("#notifications-template").html());
+                            return compiled({ notifications });
+
+                        },
+                        placement: "bottom"
+
+                    });
+                
+                  
+                });
+          
+        });
+</script>
 </body>
 </html>

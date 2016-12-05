@@ -40,7 +40,8 @@ namespace MarketPlaces.ViewModels
 
         public string Action {
             get
-            {//lambda expression takes 'c' as an argument and returns an actionresult  func is a delegate to represent that - the first input ('Markets controller') is the first input to that anonymous method, the second argument is the return type - 'Actionresult'. 'Func' is a delegate which allows the ananymous method but it doesn't need to call it, just to represent it as an expression and so it gets changed to Expression of func of marketscontroller.  
+            //{return(Id !=0 ? "Update": "Create";}
+            {//lambda expression takes 'c' as an argument and returns an actionresult  func is a delegate to represent that - the first input ('Markets controller') is the first input to that anonymous method, the second argument is the return type - 'Actionresult'. 'Func' is a delegate which allows the anonymous method but it doesn't need to call it, just to represent it as an expression and so it gets changed to Expression of func of marketscontroller.  
                // This espression now represents the update method/action in the Markets controller
                 Expression<Func<MarketsController, ActionResult>> update =
                     (c => c.Update(this));

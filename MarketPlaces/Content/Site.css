@@ -47,10 +47,19 @@ span.field-validation-error {
     color: #39508d;
    
 }
-  
+ 
 .navbar-inverse .navbar-brand {
   color: #39508d;
 } 
+.navbar-inverse .notifications {
+    position: relative;
+}
+.navbar-inverse .notifications .badge {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    background:#ff7000
+}
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
         background-color: #feab04
 

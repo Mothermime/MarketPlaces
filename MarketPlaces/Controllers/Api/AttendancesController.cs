@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 
 namespace MarketPlaces.Controllers.Api
 {
-    //web API 2 Controller - Empty Restrict ApI to authorised users.
+    //web API 2 Controller - Empty Restrict Api to authorised users.
     //The first time this is used, the line GlobalConfiguration.Configure(WebApiConfig.Register); needs to be added to the Global asax.cs file at the beginning of the Application_Start method and import the namespace
 
 
